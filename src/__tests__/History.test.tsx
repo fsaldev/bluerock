@@ -49,8 +49,10 @@ describe('History Page', () => {
   it('should render activity container with proper styling', () => {
     render(<HistoryWithRouter />);
 
-    const container = screen.getByText('Activity History').closest('.space-y-6');
-    expect(container).toBeInTheDocument();
+    const heading = screen.getByText('Activity History');
+    const container = heading.parentElement?.parentElement;
+    expect(container).not.toBeNull();
+    expect(container).toHaveClass('space-y-4');
   });
 
   it('should display activities in chronological order', () => {
